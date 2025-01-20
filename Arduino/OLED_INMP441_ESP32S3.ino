@@ -7,11 +7,11 @@
 #include "esp_system.h"
 
 // WiFi credentials
-const char* ssid = "MAK TECHNOLOGY";
-const char* password = "Mohan@9922";
+const char* ssid = "YOUR WIFI NAME";
+const char* password = "YOUR WIFI PASSWORD";
 
 // Flask server URL
-const char* serverUrl = "http://192.168.0.109:8000/upload_audio";
+const char* serverUrl = "http://YOUR IP ADDRESS:8000/upload_audio";
 
 #define pushButton 1
 #define I2S_SD 10 // Serial Data (SD)
@@ -76,8 +76,21 @@ void setup() {
   display.clearDisplay();
   display.setTextColor(SH110X_WHITE);
 
-  // Initialization message
   display.setTextSize(1);
+  display.setCursor(0, 0);
+  display.println("--------------------");
+  display.println("--------------------");
+  display.println("--------------------");
+  display.println("       DIGITAL      ");
+  display.println("     STETHOSCOPE    ");
+  display.println("--------------------");
+  display.println("--------------------");
+  display.println("--------------------");
+  display.display();
+  delay(3000);
+
+  // Initialization message
+  display.clearDisplay();
   display.setCursor(0, 0);
   display.println("Device initialised");
   display.setCursor(0, 12);
@@ -89,7 +102,6 @@ void setup() {
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
     Serial.println("Connecting to WiFi...");
-    display.setCursor(0, 24);
     display.println("....");
     display.display();
   }
@@ -111,7 +123,7 @@ void loop() {
     // Display heading
   display.clearDisplay();
 
-  display.setTextSize(1);
+  // display.setTextSize(1);
   display.setCursor(0, 1);
   display.println("--------------------");
   display.println("       DIGITAL      ");
@@ -154,7 +166,7 @@ void recordAndSendAudio() {
 
     display.clearDisplay();
 
-    display.setTextSize(1);
+    // display.setTextSize(1);
     display.setCursor(0, 1);
     display.println("--------------------");
     display.println("       DIGITAL      ");
@@ -205,7 +217,7 @@ void recordAndSendAudio() {
         Serial.println("Data from Server: "+serverResponse);
         display.clearDisplay();
 
-        display.setTextSize(1);
+        // display.setTextSize(1);
         display.setCursor(0, 1);
         display.println("--------------------");
         display.println("       DIGITAL      ");
@@ -229,6 +241,6 @@ void recordAndSendAudio() {
     free(audioData);
     audioData = NULL; // After freeing memory, ensure the pointer is set to NULL 
     buffer = NULL; // After freeing memory, ensure the pointer is set to NULL 
-    delay(6000); 
+    delay(8000); 
     esp_restart();  // This will reset the ESP32
 }
