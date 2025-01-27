@@ -11,7 +11,7 @@ const char* ssid = "YOUR WIFI NAME";
 const char* password = "YOUR WIFI PASSWORD";
 
 // Flask server URL
-const char* serverUrl = "http://192.168.0.106:8000/upload_audio"; // change to your server ip address
+const char* serverUrl = "http://<YOUR SERVER IP>:8000/upload_audio"; // change to your server ip address
 
 #define pushButton 1
 #define I2S_SD 10 // Serial Data (SD)
